@@ -1,0 +1,7 @@
+language: objective-c
+script:
+  - xcodebuild -project ReflectableEnum.xcodeproj -scheme ReflectableEnum-iOS -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -project ReflectableEnum.xcodeproj -scheme ReflectableEnum-iOS -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -project ReflectableEnum.xcodeproj -scheme ReflectableEnum-Mac ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -project ReflectableEnum.xcodeproj -scheme ReflectableEnum-Mac ONLY_ACTIVE_ARCH=NO
+
