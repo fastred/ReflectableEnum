@@ -31,9 +31,9 @@ typedef int ExampleEnum;
 // Generic (overloaded) functions
 
 __attribute__((overloadable)) NSString *REFStringForMember(ExampleEnum value); // Returns nil if the value doesn't exist.
-__attribute__((overloadable)) long long REFMaxForMember(ExampleEnum value);
-__attribute__((overloadable)) long long REFMinForMember(ExampleEnum value);
-__attribute__((overloadable)) NSArray *REFAllValuesForMember(ExampleEnum value);
+__attribute__((overloadable)) long long REFMaxForEnumWithMember(ExampleEnum value);
+__attribute__((overloadable)) long long REFMinForEnumWithMember(ExampleEnum value);
+__attribute__((overloadable)) NSArray *REFAllValuesForEnumWithMember(ExampleEnum value);
 
 // Specific functions
 
@@ -53,17 +53,17 @@ __attribute__((overloadable)) NSString *REFStringForMember(name value) \
   return private_REFString(@(#__VA_ARGS__), @(value)); \
 } \
 \
-__attribute__((overloadable)) type REFMinForMember(name value) \
+__attribute__((overloadable)) type REFMinForEnumWithMember(name value) \
 { \
   return (type)private_REFMin(@(#__VA_ARGS__)); \
 } \
 \
-__attribute__((overloadable)) type REFMaxForMember(name value) \
+__attribute__((overloadable)) type REFMaxForEnumWithMember(name value) \
 { \
   return (type)private_REFMax(@(#__VA_ARGS__)); \
 } \
 \
-__attribute__((overloadable)) NSArray *REFAllValuesForMember(name value) \
+__attribute__((overloadable)) NSArray *REFAllValuesForEnumWithMember(name value) \
 { \
   return private_REFAllValues(@(#__VA_ARGS__)); \
 } \

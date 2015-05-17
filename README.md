@@ -33,19 +33,19 @@ Now you can get a string representing an enumerator and minimum/maximum/all valu
 
 ```obj-c
 AccountType accountType = AccountTypeStandard;
-NSString *typeString = REFStringForMember(accountType);  // @"AccountTypeStandard"
-NSInteger mininimum = REFMinForMember(accountType);      // 0
-NSInteger maximum = REFMaxForMember(accountType);        // 1
-NSArray *allValues = REFAllValuesForMember(accountType); // @[@0, @1]
+NSString *typeString = REFStringForMember(accountType);          // @"AccountTypeStandard"
+NSInteger mininimum = REFMinForEnumWithMember(accountType);      // 0
+NSInteger maximum = REFMaxForEnumWithMember(accountType);        // 1
+NSArray *allValues = REFAllValuesForEnumWithMember(accountType); // @[@0, @1]
 ```
 
 In case you pass the enumerator directly to one of these functions, you have to cast it to `AccountType`, because the compiler doesn't know the type of the enumerator:
 
 ```obj-c
 NSString *typeString = REFStringForMember((AccountType)AccountTypeStandard);
-NSInteger mininimum = REFMinForMember((AccountType)AccountTypeStandard);
-NSInteger maximum = REFMaxForMember((AccountType)AccountTypeStandard);
-NSArray *allValues = REFAllValuesForMember((AccountType)AccountTypeStandard);
+NSInteger mininimum = REFMinForEnumWithMember((AccountType)AccountTypeStandard);
+NSInteger maximum = REFMaxForEnumWithMember((AccountType)AccountTypeStandard);
+NSArray *allValues = REFAllValuesForEnumWithMember((AccountType)AccountTypeStandard);
 ```
 
 The need to cast is such a bummer (rdar://20990819), so `ReflectableEnum` will create enum-specific functions for you too:

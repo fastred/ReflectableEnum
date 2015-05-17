@@ -75,26 +75,26 @@ REFLECTABLE_ENUM(NSInteger,
 
 - (void)testMinForEnumWithConsecutiveValuesUsingGenericFunction
 {
-  XCTAssertEqual(REFMinForMember((FirstEnum)FirstEnum1), 0);
+  XCTAssertEqual(REFMinForEnumWithMember((FirstEnum)FirstEnum1), 0);
 
   FirstEnum x = FirstEnum1;
-  XCTAssertEqual(REFMinForMember(x), 0);
+  XCTAssertEqual(REFMinForEnumWithMember(x), 0);
 }
 
 - (void)testMinForEnumWithInconsecutiveValuesUsingGenericFunction
 {
-  XCTAssertEqual(REFMinForMember((SecondEnum)SecondEnum1), -1);
+  XCTAssertEqual(REFMinForEnumWithMember((SecondEnum)SecondEnum1), -1);
 
   SecondEnum x = SecondEnum1;
-  XCTAssertEqual(REFMinForMember(x), -1);
+  XCTAssertEqual(REFMinForEnumWithMember(x), -1);
 }
 
 - (void)testMinForEnumWithDuplicatedValuesUsingGenericFunction
 {
-  XCTAssertEqual(REFMinForMember((ThirdEnum)ThirdEnum1), 0);
+  XCTAssertEqual(REFMinForEnumWithMember((ThirdEnum)ThirdEnum1), 0);
 
   ThirdEnum x = ThirdEnum1;
-  XCTAssertEqual(REFMinForMember(x), 0);
+  XCTAssertEqual(REFMinForEnumWithMember(x), 0);
 }
 
 
@@ -102,26 +102,26 @@ REFLECTABLE_ENUM(NSInteger,
 
 - (void)testMaxForEnumWithConsecutiveValuesUsingGenericFunction
 {
-  XCTAssertEqual(REFMaxForMember((FirstEnum)FirstEnum1), 1);
+  XCTAssertEqual(REFMaxForEnumWithMember((FirstEnum)FirstEnum1), 1);
 
   FirstEnum x = FirstEnum1;
-  XCTAssertEqual(REFMaxForMember(x), 1);
+  XCTAssertEqual(REFMaxForEnumWithMember(x), 1);
 }
 
 - (void)testMaxForEnumWithInconsecutiveValuesUsingGenericFunction
 {
-  XCTAssertEqual(REFMaxForMember((SecondEnum)SecondEnum1), 2);
+  XCTAssertEqual(REFMaxForEnumWithMember((SecondEnum)SecondEnum1), 2);
 
   SecondEnum x = SecondEnum1;
-  XCTAssertEqual(REFMaxForMember(x), 2);
+  XCTAssertEqual(REFMaxForEnumWithMember(x), 2);
 }
 
 - (void)testMaxForEnumWithDuplicatedValuesUsingGenericFunction
 {
-  XCTAssertEqual(REFMaxForMember((ThirdEnum)ThirdEnum1), 3);
+  XCTAssertEqual(REFMaxForEnumWithMember((ThirdEnum)ThirdEnum1), 3);
 
   ThirdEnum x = ThirdEnum1;
-  XCTAssertEqual(REFMaxForMember(x), 3);
+  XCTAssertEqual(REFMaxForEnumWithMember(x), 3);
 }
 
 
@@ -129,26 +129,26 @@ REFLECTABLE_ENUM(NSInteger,
 
 - (void)testAllValuesForEnumWithConsecutiveValuesUsingGenericFunction
 {
-  XCTAssertEqualObjects(REFAllValuesForMember((FirstEnum)FirstEnum1), (@[@0, @1]));
+  XCTAssertEqualObjects(REFAllValuesForEnumWithMember((FirstEnum)FirstEnum1), (@[@0, @1]));
 
   FirstEnum x = FirstEnum1;
-  XCTAssertEqualObjects(REFAllValuesForMember(x), (@[@0, @1]));
+  XCTAssertEqualObjects(REFAllValuesForEnumWithMember(x), (@[@0, @1]));
 }
 
 - (void)testAllValuesForEnumWithInconsecutiveValuesUsingGenericFunction
 {
-  XCTAssertEqualObjects(REFAllValuesForMember((SecondEnum)SecondEnum1), (@[@(-1), @2]));
+  XCTAssertEqualObjects(REFAllValuesForEnumWithMember((SecondEnum)SecondEnum1), (@[@(-1), @2]));
 
   SecondEnum x = SecondEnum1;
-  XCTAssertEqualObjects(REFAllValuesForMember(x), (@[@(-1), @2]));
+  XCTAssertEqualObjects(REFAllValuesForEnumWithMember(x), (@[@(-1), @2]));
 }
 
 - (void)testAllValuesForEnumWithDuplicatedValuesUsingGenericFunction
 {
-  XCTAssertEqualObjects(REFAllValuesForMember((ThirdEnum)ThirdEnum1), (@[@0, @1, @3]));
+  XCTAssertEqualObjects(REFAllValuesForEnumWithMember((ThirdEnum)ThirdEnum1), (@[@0, @1, @3]));
 
   ThirdEnum x = ThirdEnum1;
-  XCTAssertEqualObjects(REFAllValuesForMember(x), (@[@0, @1, @3]));
+  XCTAssertEqualObjects(REFAllValuesForEnumWithMember(x), (@[@0, @1, @3]));
 }
 
 
