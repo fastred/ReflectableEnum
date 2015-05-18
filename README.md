@@ -23,10 +23,10 @@ typedef NS_ENUM(NSUInteger, AccountType) {
 with:
 
 ```obj-c
-REFLECTABLE_ENUM(NSInteger,
-                 AccountType,
-                 AccountTypeStandard,
-                 AccountTypeAdmin);
+REFLECTABLE_ENUM(NSInteger, AccountType,
+  AccountTypeStandard,
+  AccountTypeAdmin
+);
 ```
 
 Now you can get a string representing an enumerator and all/minimum/maximum values of an enumeration the enumerator belongs to with:
