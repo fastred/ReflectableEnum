@@ -5,9 +5,9 @@ A macro and a set of functions introducing reflection for enumerations in Object
 Features:
 
 - get a string value for an enumeration's member (which is a [common][1] [problem][2])
-- get a minimum value of an enumeration
-- get a maximum value of an enumeration
 - get all values used in an enumeration (also a [prevalent][3] [issue][4])
+- get a minimum value in an enumeration
+- get a maximum value in an enumeration
 
 ## Usage
 
@@ -29,35 +29,35 @@ REFLECTABLE_ENUM(NSInteger,
                  AccountTypeAdmin);
 ```
 
-Now you can get a string representing an enumerator and minimum/maximum/all values of an enumeration the enumerator belongs to with:
+Now you can get a string representing an enumerator and all/minimum/maximum values of an enumeration the enumerator belongs to with:
 
 ```obj-c
 AccountType accountType = AccountTypeStandard;
 NSString *typeString = REFStringForMember(accountType);          // @"AccountTypeStandard"
+NSArray *allValues = REFAllValuesForEnumWithMember(accountType); // @[@0, @1]
 NSInteger mininimum = REFMinForEnumWithMember(accountType);      // 0
 NSInteger maximum = REFMaxForEnumWithMember(accountType);        // 1
-NSArray *allValues = REFAllValuesForEnumWithMember(accountType); // @[@0, @1]
 ```
 
 In case you pass the enumerator directly to one of these functions, you have to cast it to `AccountType`, because the compiler doesn't know the type of the enumerator:
 
 ```obj-c
 NSString *typeString = REFStringForMember((AccountType)AccountTypeStandard);
+NSArray *allValues = REFAllValuesForEnumWithMember((AccountType)AccountTypeStandard);
 NSInteger mininimum = REFMinForEnumWithMember((AccountType)AccountTypeStandard);
 NSInteger maximum = REFMaxForEnumWithMember((AccountType)AccountTypeStandard);
-NSArray *allValues = REFAllValuesForEnumWithMember((AccountType)AccountTypeStandard);
 ```
 
 The need to cast is such a bummer (rdar://20990819), so `ReflectableEnum` will create enum-specific functions for you too:
 
 ```obj-c
 NSString *typeString = REFStringForMemberInAccountType(AccountTypeStandard);
+NSArray *allValues = REFAllValuesInAccountType();
 NSInteger mininimum = REFMinInAccountType();
 NSInteger maximum = REFMaxInAccountType();
-NSArray *allValues = REFAllValuesInAccountType();
 ```
 
-As you can see names of these functions depend on the name of the enumeration and follow these patterns: `REFStringForMemberIn\(enumName)`, `REFMinIn\(enumName)`, `REFMaxIn\(enumName)` and `REFAllValuesIn\(enumName)`.
+As you can see names of these functions depend on the name of the enumeration and follow these patterns: `REFStringForMemberIn\(enumName)`, `REFAllValuesIn\(enumName)`, `REFMinIn\(enumName)` and `REFMaxIn\(enumName)` 
 
 ## Drawbacks
 
