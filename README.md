@@ -75,6 +75,10 @@ Install with Carthage:
 
     github "fastred/ReflectableEnum"
 
+or with CocoaPods:
+
+    pod "ReflectableEnum"
+
 And then import with: `#import <ReflectableEnum/ReflectableEnum.h>`
 
 ## Author
