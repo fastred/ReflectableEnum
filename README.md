@@ -4,8 +4,8 @@ A macro and a set of functions introducing reflection for enumerations in Object
 
 Features:
 
-- get a string value for an enumeration's member (which is a [common][1] [problem][2])
-- get all values used in an enumeration (also a [prevalent][3] [issue][4])
+- get a string value for an enumeration's member (which is a [<u>common</u>][1] [<u>problem</u>][2])
+- get all values used in an enumeration (also a [<u>prevalent</u>][3] [<u>issue</u>][4])
 - get a minimum value in an enumeration
 - get a maximum value in an enumeration
 
