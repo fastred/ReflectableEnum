@@ -48,7 +48,7 @@ NSInteger mininimum = REFMinForEnumWithMember((AccountType)AccountTypeStandard);
 NSInteger maximum = REFMaxForEnumWithMember((AccountType)AccountTypeStandard);
 ```
 
-The need to cast is such a bummer (rdar://20990819), so `ReflectableEnum` will create enum-specific functions for you too:
+The need to cast is such a bummer ([rdar://20990819][5]), so `ReflectableEnum` will create enum-specific functions for you too:
 
 ```obj-c
 NSString *typeString = REFStringForMemberInAccountType(AccountTypeStandard);
@@ -92,3 +92,4 @@ Arkadiusz Holko:
   [2]:http://stackoverflow.com/questions/1094984/convert-objective-c-typedef-to-its-string-equivalent
   [3]:http://stackoverflow.com/questions/6910127/iteration-over-enum-in-objective-c
   [4]:http://stackoverflow.com/questions/1662719/looping-through-enum-values
+  [5]:http://www.openradar.me/radar?id=6679230377099264
