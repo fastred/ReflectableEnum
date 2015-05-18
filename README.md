@@ -7,7 +7,7 @@ Features:
 - get a string value for an enumeration's member (which is a [common][1] [problem][2])
 - get a minimum value of an enumeration
 - get a maximum value of an enumeration
-- get all values used in an enumeration
+- get all values used in an enumeration (also a [prevalent][3] [issue][4])
 
 ## Usage
 
@@ -90,3 +90,5 @@ Arkadiusz Holko:
 
   [1]:http://stackoverflow.com/questions/6331762/enum-values-to-nsstring-ios
   [2]:http://stackoverflow.com/questions/1094984/convert-objective-c-typedef-to-its-string-equivalent
+  [3]:http://stackoverflow.com/questions/6910127/iteration-over-enum-in-objective-c
+  [4]:http://stackoverflow.com/questions/1662719/looping-through-enum-values
