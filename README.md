@@ -39,7 +39,7 @@ NSInteger mininimum = REFMinForEnumWithMember(accountType);      // 0
 NSInteger maximum = REFMaxForEnumWithMember(accountType);        // 1
 ```
 
-In case you pass the enumerator directly to one of these functions, you have to cast it to `AccountType`, because the compiler doesn't know the type of the enumerator:
+In case you pass the enumerator directly to one of these functions, you have to cast it to `AccountType`, because the compiler doesn't know its type (it's treated as `NSInteger` in this case):
 
 ```obj-c
 NSString *typeString = REFStringForMember((AccountType)AccountTypeStandard);
@@ -48,7 +48,7 @@ NSInteger mininimum = REFMinForEnumWithMember((AccountType)AccountTypeStandard);
 NSInteger maximum = REFMaxForEnumWithMember((AccountType)AccountTypeStandard);
 ```
 
-The need to cast is such a bummer ([rdar://20990819][5]), so `ReflectableEnum` will create enum-specific functions for you too:
+The need to cast is a hassle, so `ReflectableEnum` will create enum-specific functions for you too:
 
 ```obj-c
 NSString *typeString = REFStringForMemberInAccountType(AccountTypeStandard);
