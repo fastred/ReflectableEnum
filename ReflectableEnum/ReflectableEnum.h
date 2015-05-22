@@ -53,17 +53,17 @@ __attribute__((overloadable)) NSString *REFStringForMember(name value) \
   return private_REFString(@(#__VA_ARGS__), @(value)); \
 } \
 \
-__attribute__((overloadable)) type REFMinForEnumWithMember(name value) \
+__attribute__((overloadable)) type REFMinForEnumWithMember(name _) \
 { \
   return (type)private_REFMin(@(#__VA_ARGS__)); \
 } \
 \
-__attribute__((overloadable)) type REFMaxForEnumWithMember(name value) \
+__attribute__((overloadable)) type REFMaxForEnumWithMember(name _) \
 { \
   return (type)private_REFMax(@(#__VA_ARGS__)); \
 } \
 \
-__attribute__((overloadable)) NSArray *REFAllValuesForEnumWithMember(name value) \
+__attribute__((overloadable)) NSArray *REFAllValuesForEnumWithMember(name _) \
 { \
   return private_REFAllValues(@(#__VA_ARGS__)); \
 } \
