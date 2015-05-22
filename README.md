@@ -1,5 +1,7 @@
 # ReflectableEnum
 
+[![Build Status](https://travis-ci.org/fastred/ReflectableEnum.svg?branch=master)](https://travis-ci.org/fastred/ReflectableEnum)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 A macro and a set of functions introducing reflection for enumerations in Objective-C.
 
