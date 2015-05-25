@@ -237,4 +237,19 @@ REFLECTABLE_ENUM(NSInteger,
   XCTAssertEqualObjects(REFAllValuesInThirdEnum(), (@[@0, @1, @3]));
 }
 
+
+#pragma mark - Min/Max caching
+
+- (void)testMinShouldReturnTheSameValueEachTime
+{
+  XCTAssertEqual(REFMinInSecondEnum(), -1);
+  XCTAssertEqual(REFMinInSecondEnum(), -1);
+}
+
+- (void)testMaxShouldReturnTheSameValueEachTime
+{
+  XCTAssertEqual(REFMaxInSecondEnum(), 2);
+  XCTAssertEqual(REFMaxInSecondEnum(), 2);
+}
+
 @end

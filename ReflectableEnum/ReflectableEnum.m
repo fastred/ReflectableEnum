@@ -36,8 +36,8 @@
 @interface REFEnumRepresentation ()
 
 @property (nonatomic, copy, readonly) NSDictionary *mapFromValueToString;
-@property (nonatomic, assign, readwrite) long long maximumValue;
-@property (nonatomic, assign, readwrite) long long minimumValue;
+@property (nonatomic, strong) NSNumber *maximumValueCache;
+@property (nonatomic, strong) NSNumber *minimumValueCache;
 @property (nonatomic, copy, readwrite) NSArray *allValues;
 
 @end
@@ -56,22 +56,22 @@
 
 - (long long)maximumValue
 {
-  if (!_maximumValue) {
+  if (!self.maximumValueCache) {
     NSArray *keys = [self.mapFromValueToString allKeys];
-    _maximumValue = [[keys valueForKeyPath:@"@max.self"] longLongValue];
+    self.maximumValueCache = [keys valueForKeyPath:@"@max.self"];
   }
 
-  return _maximumValue;
+  return [self.maximumValueCache longLongValue];
 }
 
 - (long long)minimumValue
 {
-  if (!_minimumValue) {
+  if (!self.minimumValueCache) {
     NSArray *keys = [self.mapFromValueToString allKeys];
-    _minimumValue = [[keys valueForKeyPath:@"@min.self"] longLongValue];
+    self.minimumValueCache = [keys valueForKeyPath:@"@min.self"];
   }
 
-  return _minimumValue;
+  return [self.minimumValueCache longLongValue];
 }
 
 - (NSString *)stringForNumber:(NSNumber *)number
