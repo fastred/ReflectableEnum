@@ -48,42 +48,42 @@ typedef NS_ENUM(type, name) { \
 __VA_ARGS__ \
 }; \
 \
-__attribute__((overloadable)) NSString *REFStringForMember(name value) \
+__attribute__((overloadable)) static inline NSString *REFStringForMember(name value) \
 { \
   return private_REFString(@(#__VA_ARGS__), @(value)); \
 } \
 \
-__attribute__((overloadable)) type REFMinForEnumWithMember(name _) \
+__attribute__((overloadable)) static inline type REFMinForEnumWithMember(name _) \
 { \
   return (type)private_REFMin(@(#__VA_ARGS__)); \
 } \
 \
-__attribute__((overloadable)) type REFMaxForEnumWithMember(name _) \
+__attribute__((overloadable)) static inline type REFMaxForEnumWithMember(name _) \
 { \
   return (type)private_REFMax(@(#__VA_ARGS__)); \
 } \
 \
-__attribute__((overloadable)) NSArray *REFAllValuesForEnumWithMember(name _) \
+__attribute__((overloadable)) static inline NSArray *REFAllValuesForEnumWithMember(name _) \
 { \
   return private_REFAllValues(@(#__VA_ARGS__)); \
 } \
 \
-__attribute__((overloadable)) NSString *REFStringForMemberIn##name(name value) \
+__attribute__((overloadable)) static inline NSString *REFStringForMemberIn##name(name value) \
 { \
   return private_REFString(@(#__VA_ARGS__), @((name)value)); \
 } \
 \
-type REFMinIn##name(void) \
+static inline type REFMinIn##name(void) \
 { \
   return (type)private_REFMin(@(#__VA_ARGS__)); \
 } \
 \
-type REFMaxIn##name(void) \
+static inline type REFMaxIn##name(void) \
 { \
   return (type)private_REFMax(@(#__VA_ARGS__)); \
 } \
 \
-NSArray *REFAllValuesIn##name(void) \
+static inline NSArray *REFAllValuesIn##name(void) \
 { \
   return private_REFAllValues(@(#__VA_ARGS__)); \
 } \
