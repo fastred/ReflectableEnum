@@ -115,6 +115,11 @@
         _containsDuplicates = YES;
         number = matchingKeys.firstObject;
         NSCAssert(number, @"Parsing should lead to a number");
+      } else {
+        NSString *matchingObject = [mutableDictionary objectForKey:number];
+        if (matchingObject) {
+          _containsDuplicates = YES;
+        }
       }
 
       currentIndex = [number longLongValue];
