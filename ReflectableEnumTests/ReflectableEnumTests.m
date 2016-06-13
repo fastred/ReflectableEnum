@@ -29,6 +29,13 @@ REFLECTABLE_ENUM(NSInteger,
                  ThirdEnum3,
                  ThirdEnum4 = 3)
 
+REFLECTABLE_ENUM(NSInteger,
+                 FourthEnum,
+                 FourthEnum1,
+                 FourthEnum2 = 0,
+                 FourthEnum3,
+                 FourthEnum4)
+
 
 @interface ReflectableEnumTests : XCTestCase
 
@@ -68,6 +75,11 @@ REFLECTABLE_ENUM(NSInteger,
 
   ThirdEnum x = ThirdEnum1;
   XCTAssertThrowsSpecific(REFStringForMember(x), NSException);
+    
+  XCTAssertThrowsSpecific(REFStringForMember((FourthEnum)FourthEnum1), NSException);
+    
+  FourthEnum y = FourthEnum1;
+  XCTAssertThrowsSpecific(REFStringForMember(y), NSException);
 }
 
 
