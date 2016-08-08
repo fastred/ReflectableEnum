@@ -100,34 +100,36 @@
   NSMutableDictionary *mutableDictionary = [NSMutableDictionary new];
 
   for (NSString *member in [enumDefinition componentsSeparatedByString:@","]) {
-    NSArray *parts = [[member componentsSeparatedByString:@"="] ine_map:^NSString *(NSString *element) {
-      return [element stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    }];
-    NSCAssert(parts.count == 1 || parts.count == 2, @"Illegal member definition");
-
-    NSString *name = [parts firstObject];
-    if (parts.count == 2) {
-      NSString *valueString = [parts lastObject];
-      NSNumber *number = [numberFormatter numberFromString:valueString];
-
-      if (!number) {
-        NSArray *matchingKeys = [mutableDictionary allKeysForObject:valueString];
-        _containsDuplicates = YES;
-        number = matchingKeys.firstObject;
-        NSCAssert(number, @"Parsing should lead to a number");
-      } else {
-        NSString *matchingObject = [mutableDictionary objectForKey:number];
-        if (matchingObject) {
-          _containsDuplicates = YES;
-        }
+      if (member.length) {
+          NSArray *parts = [[member componentsSeparatedByString:@"="] ine_map:^NSString *(NSString *element) {
+              return [element stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+          }];
+          NSCAssert(parts.count == 1 || parts.count == 2, @"Illegal member definition");
+          
+          NSString *name = [parts firstObject];
+          if (parts.count == 2) {
+              NSString *valueString = [parts lastObject];
+              NSNumber *number = [numberFormatter numberFromString:valueString];
+              
+              if (!number) {
+                  NSArray *matchingKeys = [mutableDictionary allKeysForObject:valueString];
+                  _containsDuplicates = YES;
+                  number = matchingKeys.firstObject;
+                  NSCAssert(number, @"Parsing should lead to a number");
+              } else {
+                  NSString *matchingObject = [mutableDictionary objectForKey:number];
+                  if (matchingObject) {
+                      _containsDuplicates = YES;
+                  }
+              }
+              
+              currentIndex = [number longLongValue];
+          } else {
+              currentIndex++;
+          }
+          
+          mutableDictionary[@(currentIndex)] = name;
       }
-
-      currentIndex = [number longLongValue];
-    } else {
-      currentIndex++;
-    }
-
-    mutableDictionary[@(currentIndex)] = name;
   }
 
   _mapFromValueToString = [mutableDictionary copy];
