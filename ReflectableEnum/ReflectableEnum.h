@@ -19,6 +19,7 @@ NSString *private_REFString(NSString *enumDefinition, NSNumber *number);
 long long private_REFMax(NSString *enumDefinition);
 long long private_REFMin(NSString *enumDefinition);
 NSArray *private_REFAllValues(NSString *enumDefinition);
+long long private_REFEnum(NSString *enumDefinition, NSString *value);
 typedef int ExampleEnum;
 
 
@@ -34,6 +35,7 @@ __attribute__((overloadable)) NSString *REFStringForMember(ExampleEnum value); /
 __attribute__((overloadable)) long long REFMaxForEnumWithMember(ExampleEnum value);
 __attribute__((overloadable)) long long REFMinForEnumWithMember(ExampleEnum value);
 __attribute__((overloadable)) NSArray *REFAllValuesForEnumWithMember(ExampleEnum value);
+__attribute__((overloadable)) NSString *REFEnumForMember(ExampleEnum value, NSString* str);
 
 // Specific functions
 
@@ -67,6 +69,11 @@ __attribute__((overloadable)) static inline NSArray *REFAllValuesForEnumWithMemb
 { \
   return private_REFAllValues(@(#__VA_ARGS__)); \
 } \
+__attribute__((overloadable))  static inline type REFEnumForMember(name _, NSString* value) \
+{ \
+  return (type)private_REFEnum(@(#__VA_ARGS__), (value));  \
+} \
+\
 \
 __attribute__((overloadable)) static inline NSString *REFStringForMemberIn##name(name value) \
 { \
@@ -86,4 +93,9 @@ static inline type REFMaxIn##name(void) \
 static inline NSArray *REFAllValuesIn##name(void) \
 { \
   return private_REFAllValues(@(#__VA_ARGS__)); \
+} \
+\
+static inline type REFEnumForMemberIn##name(NSString *value) \
+{ \
+return (type)private_REFEnum(@(#__VA_ARGS__), (value)); \
 } \
