@@ -205,6 +205,8 @@ REFLECTABLE_ENUM(NSInteger,
     
     ThirdEnum x = ThirdEnum3;
     XCTAssertEqual(REFEnumForMember(x, @"ThirdEnum3"), ThirdEnum3);
+    XCTAssertEqual(REFEnumForMemberInThirdEnum( @"ThirdEnum3"), ThirdEnum3);
+    
     
 }
     

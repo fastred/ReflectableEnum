@@ -11,6 +11,7 @@ Features:
 - get all values used in an enumeration (also a [<u>prevalent</u>][3] [<u>issue</u>][4])
 - get a minimum value in an enumeration
 - get a maximum value in an enumeration
+- get an enumeration's memeber for a string (if exists)
 
 ## Usage
 
@@ -40,6 +41,7 @@ NSString *typeString = REFStringForMember(accountType);          // @"AccountTyp
 NSArray *allValues = REFAllValuesForEnumWithMember(accountType); // @[@0, @1]
 NSInteger mininimum = REFMinForEnumWithMember(accountType);      // 0
 NSInteger maximum = REFMaxForEnumWithMember(accountType);        // 1
+AccountType accountType = REFEnumForMember(accountType, @"AccountTypeAdmin"); // 1 (first parama is just for enum type indication)
 ```
 
 In case you pass the enumerator directly to one of these functions, you have to cast it to `AccountType`, because the compiler doesn't know its type (it's treated as `NSInteger` in this case):
@@ -49,6 +51,8 @@ NSString *typeString = REFStringForMember((AccountType)AccountTypeStandard);
 NSArray *allValues = REFAllValuesForEnumWithMember((AccountType)AccountTypeStandard);
 NSInteger mininimum = REFMinForEnumWithMember((AccountType)AccountTypeStandard);
 NSInteger maximum = REFMaxForEnumWithMember((AccountType)AccountTypeStandard);
+AccountType accountType = REFEnumForMember((AccountType)0, @"AccountTypeAdmin"); // 1 (first parama is just for enum type indication)
+
 ```
 
 The need to cast is a hassle, so `ReflectableEnum` will create enum-specific functions for you too:
@@ -58,6 +62,7 @@ NSString *typeString = REFStringForMemberInAccountType(AccountTypeStandard);
 NSArray *allValues = REFAllValuesInAccountType();
 NSInteger mininimum = REFMinInAccountType();
 NSInteger maximum = REFMaxInAccountType();
+AccountType accountType = REFEnumForMemberInAccountType((AccountType)0, @"AccountTypeAdmin"); // 1 (first parama is just for enum type indication)
 ```
 
 As you can see names of these functions depend on the name of the enumeration and follow these patterns: `REFStringForMemberIn\(enumName)`, `REFAllValuesIn\(enumName)`, `REFMinIn\(enumName)` and `REFMaxIn\(enumName)` 
