@@ -199,13 +199,13 @@ REFLECTABLE_ENUM(NSInteger,
     
 - (void)testEnumForStringWithConsecutiveValuesUsingSpecificFunction
 {
-    XCTAssertEqual(REFEnumForMemberInFirstEnum(@"FirstEnum1"), FirstEnum1);
-    XCTAssertEqual(REFEnumForMemberInSecondEnum(@"SecondEnum2"), SecondEnum2);
-    XCTAssertEqual(REFEnumForMemberInThirdEnum(@"ThirdEnum3"), ThirdEnum3);
+    XCTAssertEqual(REFMemberForStringInFirstEnum(@"FirstEnum1"), FirstEnum1);
+    XCTAssertEqual(REFMemberForStringInSecondEnum(@"SecondEnum2"), SecondEnum2);
+    XCTAssertEqual(REFMemberForStringInThirdEnum(@"ThirdEnum3"), ThirdEnum3);
     
     ThirdEnum x = ThirdEnum3;
-    XCTAssertEqual(REFEnumForMember(x, @"ThirdEnum3"), ThirdEnum3);
-    XCTAssertEqual(REFEnumForMemberInThirdEnum( @"ThirdEnum3"), ThirdEnum3);
+    XCTAssertEqual(REFMemberForString(x, @"ThirdEnum3"), ThirdEnum3);
+    XCTAssertEqual(REFMemberForStringInThirdEnum( @"ThirdEnum3"), ThirdEnum3);
     
     
 }

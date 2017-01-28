@@ -35,7 +35,7 @@ __attribute__((overloadable)) NSString *REFStringForMember(ExampleEnum value); /
 __attribute__((overloadable)) long long REFMaxForEnumWithMember(ExampleEnum value);
 __attribute__((overloadable)) long long REFMinForEnumWithMember(ExampleEnum value);
 __attribute__((overloadable)) NSArray *REFAllValuesForEnumWithMember(ExampleEnum value);
-__attribute__((overloadable)) NSString *REFEnumForMember(ExampleEnum value, NSString* str);
+__attribute__((overloadable)) NSString *REFMemberForString(ExampleEnum value, NSString* str);
 
 // Specific functions
 
@@ -69,7 +69,7 @@ __attribute__((overloadable)) static inline NSArray *REFAllValuesForEnumWithMemb
 { \
   return private_REFAllValues(@(#__VA_ARGS__)); \
 } \
-__attribute__((overloadable))  static inline type REFEnumForMember(name _, NSString* value) \
+__attribute__((overloadable))  static inline type REFMemberForString(name _, NSString* value) \
 { \
   return (type)private_REFEnum(@(#__VA_ARGS__), (value));  \
 } \
@@ -95,7 +95,7 @@ static inline NSArray *REFAllValuesIn##name(void) \
   return private_REFAllValues(@(#__VA_ARGS__)); \
 } \
 \
-static inline type REFEnumForMemberIn##name(NSString *value) \
+static inline type REFMemberForStringIn##name(NSString *value) \
 { \
 return (type)private_REFEnum(@(#__VA_ARGS__), (value)); \
 } \
