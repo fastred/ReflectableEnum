@@ -168,3 +168,16 @@ NSArray *private_REFAllValues(NSString *enumDefinition)
 {
   return private_REFRepresentationFromDefinition(enumDefinition).allValues;
 }
+
+long long private_REFEnum(NSString *enumDefinition, NSString *value)
+{
+    NSDictionary *all = private_REFRepresentationFromDefinition(enumDefinition).mapFromValueToString;
+    for (NSNumber *key in all.allKeys){
+        NSString *enumStr = all[key];
+        if ([enumStr isEqualToString:value]){
+            return key.longValue;
+        }
+    }
+    return -1;
+}
+
